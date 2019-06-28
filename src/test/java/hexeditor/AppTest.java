@@ -3,12 +3,22 @@
  */
 package hexeditor;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
+
+import static hexeditor.HexEditor.AREA_RAW_SYMBOLS_IN_LINE;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AppTest {
-    @Test public void testAppHasAGreeting() {
-       //hexeditor.HexEditor classUnderTest = new HexEditor();
-       System.out.println(classUnderTest);
+
+    HexEditor editor = new HexEditor();
+
+    @Test public void changeFileOffsetTest() {
+        int line = 4;
+        editor.currentFileLeftOffset = line * AREA_RAW_SYMBOLS_IN_LINE;
+        editor.changeFileOffset(-10);
+        assertEquals(0, editor.currentFileLeftOffset);
+        editor.currentFileLeftOffset = line * AREA_RAW_SYMBOLS_IN_LINE;
+        editor.changeFileOffset(1);
+        assertEquals((line - 1) * AREA_RAW_SYMBOLS_IN_LINE, editor.currentFileLeftOffset);
     }
 }

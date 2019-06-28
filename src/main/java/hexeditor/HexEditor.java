@@ -29,7 +29,7 @@ public class HexEditor {
     private Path currentFile;
     private Path tempFile;
     private int currentFileRightOffset = 0;
-    private int currentFileLeftOffset = 0;
+    int currentFileLeftOffset = 0;
     private static final String NEW_FILE_POSTFIX = ".hexn";
     private static final String TEMP_FILE_POSTFIX = ".tmp";
 
@@ -56,9 +56,9 @@ public class HexEditor {
 
     private static final int FRAME_MIN_WIDTH = 640;
     private static final int FRAME_MIN_HEIGHT = 480;
-    private static final int AREA_RAW_SYMBOLS_IN_LINE = 16;
-    private static final int HEX_AREA_SYMBOLS_FOR_RAW = 3;
-    private static final int HEX_AREA_SYMBOLS_IN_LINE = AREA_RAW_SYMBOLS_IN_LINE * HEX_AREA_SYMBOLS_FOR_RAW;
+    static final int AREA_RAW_SYMBOLS_IN_LINE = 16;
+    static final int HEX_AREA_SYMBOLS_FOR_RAW = 3;
+    static final int HEX_AREA_SYMBOLS_IN_LINE = AREA_RAW_SYMBOLS_IN_LINE * HEX_AREA_SYMBOLS_FOR_RAW;
     private static final int AREA_NUMBER_OF_LINES = 25;
     private static final int AREA_SYMBOLS_AS_NUMBER = 32;
     private static final int AREA_SYMBOLS_AS_BOX = 126;
@@ -522,7 +522,7 @@ public class HexEditor {
         previousSymbolScrollValue = symbolAreaScrollPane.getVerticalScrollBar().getValue();
     }
 
-    private void changeFileOffset(int linesNumber){
+    void changeFileOffset(int linesNumber){
         currentFileLeftOffset = currentFileLeftOffset + linesNumber * AREA_RAW_SYMBOLS_IN_LINE > 0
                 ? currentFileLeftOffset + linesNumber * AREA_RAW_SYMBOLS_IN_LINE
                 : 0;
